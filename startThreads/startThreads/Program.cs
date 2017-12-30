@@ -59,26 +59,53 @@ namespace startThreads
             });
 
             t3.Name = "Thread T3";
+
+            Thread t4 = new Thread(() =>
+            {
+                int numberOfSeconds = 0;
+                while (numberOfSeconds < 16)
+                {
+                    Thread.Sleep(1000);
+
+                    numberOfSeconds++;
+                }
+
+                Console.WriteLine("t4 -> I ran for 16 seconds");
+            });
+
+            t4.Name = "Thread T4";
+
+           
             Console.WriteLine("\nCurrent thread: {0}", Thread.CurrentThread.Name);
             Console.WriteLine("Thread T1 {0}", t1.ThreadState);
             Console.WriteLine("Thread T2 {0}", t2.ThreadState);
-            Console.WriteLine("Thread T3 {0}\n\n", t3.ThreadState);
+            Console.WriteLine("Thread T3 {0}", t3.ThreadState);
+            Console.WriteLine("Thread T4 {0}\n\n", t4.ThreadState);
             t1.Start();
             Console.WriteLine("\nCurrent thread: {0}",Thread.CurrentThread.Name);
             Console.WriteLine("Thread T1 {0}", t1.ThreadState);
             Console.WriteLine("Thread T2 {0}", t2.ThreadState);
-            Console.WriteLine("Thread T3 {0}\n\n", t3.ThreadState);
+            Console.WriteLine("Thread T3 {0}", t3.ThreadState);
+            Console.WriteLine("Thread T4 {0}\n\n", t4.ThreadState);
             t2.Start();
             Console.WriteLine("\nCurrent thread: {0}", Thread.CurrentThread.Name);
             Console.WriteLine("Thread T1 {0}", t1.ThreadState);
             Console.WriteLine("Thread T2 {0}", t2.ThreadState);
-            Console.WriteLine("Thread T3 {0}\n\n", t3.ThreadState);
+            Console.WriteLine("Thread T3 {0}", t3.ThreadState);
+            Console.WriteLine("Thread T4 {0}\n\n", t4.ThreadState);
             //passing parameter to parameterized thread
             t3.Start(6);
             Console.WriteLine("\nCurrent thread: {0}", Thread.CurrentThread.Name);
             Console.WriteLine("Thread T1 {0}", t1.ThreadState);
             Console.WriteLine("Thread T2 {0}", t2.ThreadState);
-            Console.WriteLine("Thread T3 {0}\n\n", t3.ThreadState);
+            Console.WriteLine("Thread T3 {0}", t3.ThreadState);
+            Console.WriteLine("Thread T4 {0}\n\n", t4.ThreadState);
+            t4.Start();
+            Console.WriteLine("\nCurrent thread: {0}", Thread.CurrentThread.Name);
+            Console.WriteLine("Thread T1 {0}", t1.ThreadState);
+            Console.WriteLine("Thread T2 {0}", t2.ThreadState);
+            Console.WriteLine("Thread T3 {0}", t3.ThreadState);
+            Console.WriteLine("Thread T4 {0}\n\n", t4.ThreadState);
 
             //wait for t1 to fimish
             t1.Join();
@@ -93,14 +120,23 @@ namespace startThreads
             Console.WriteLine("\nCurrent thread: {0}", Thread.CurrentThread.Name);
             Console.WriteLine("Thread T1 {0}", t1.ThreadState);
             Console.WriteLine("Thread T2 {0}", t2.ThreadState);
-            Console.WriteLine("Thread T3 {0}\n\n", t3.ThreadState);
+            Console.WriteLine("Thread T3 {0}", t3.ThreadState);
+            Console.WriteLine("Thread T4 {0}\n\n", t4.ThreadState);
 
             //wait for t3 to finish
             t3.Join();
             Console.WriteLine("\nCurrent thread: {0}", Thread.CurrentThread.Name);
             Console.WriteLine("Thread T1 {0}", t1.ThreadState);
             Console.WriteLine("Thread T2 {0}", t2.ThreadState);
-            Console.WriteLine("Thread T3 {0}\n\n", t3.ThreadState);
+            Console.WriteLine("Thread T3 {0}", t3.ThreadState);
+            Console.WriteLine("Thread T4 {0}\n\n", t4.ThreadState);
+            //wait for t4 to finish
+            t4.Join();
+            Console.WriteLine("\nCurrent thread: {0}", Thread.CurrentThread.Name);
+            Console.WriteLine("Thread T1 {0}", t1.ThreadState);
+            Console.WriteLine("Thread T2 {0}", t2.ThreadState);
+            Console.WriteLine("Thread T3 {0}", t3.ThreadState);
+            Console.WriteLine("Thread T4 {0}\n\n", t4.ThreadState);
 
 
             Console.WriteLine("All Threads Exited in {0} secods.", (DateTime.Now - startTime).TotalSeconds);
