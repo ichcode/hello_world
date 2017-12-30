@@ -139,7 +139,7 @@ namespace startThreads
             Console.WriteLine("Thread T4 {0}\n\n", t4.ThreadState);
 
 
-            Console.WriteLine("All Threads Exited in {0} secods.", (DateTime.Now - startTime).TotalSeconds);
+            Console.WriteLine("All Threads Exited in {0} secods", (DateTime.Now - startTime).TotalSeconds);
            
 
             
