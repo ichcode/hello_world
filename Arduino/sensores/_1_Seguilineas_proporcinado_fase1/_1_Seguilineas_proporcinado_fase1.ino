@@ -19,7 +19,7 @@ void setup()
 
 }
 /* moviendo con proporcion de la velocidad angular de nuestro robot (follow(analogRead((A0)),10))) parametro de turn de movimiento base */
-/* OJO la velocidad es negativa porque tengo fisicamente el servo en la otra dirección"
+/* OJO la velocidad es negativa porque tengo fisicamente el servo en la otra dirección" */
 void loop()
 {
     move_base((5),(9),-28,28,follow(analogRead((A0)),10));
